@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_collect"
+        android:checkable="false"
+        android:icon="@mipmap/ic_collect_with"
+        android:orderInCategory="0"
+        android:title="@string/collect"
+        app:showAsAction="always" />
+
+
+    <item
+        android:icon="@mipmap/ic_menu_s"
+        android:title="@string/display_usage"
+        app:showAsAction="always">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/stack_all_down"
+                    android:checked="true"
+                    android:title="@string/all_down" />
+                <item
+                    android:id="@+id/stack_up_down"
+                    android:title="@string/up_down" />
+                <item
+                    android:id="@+id/stack_up_down_stack"
+                    android:title="@string/up_down_stack" />
+            </group>
+        </menu>
+    </item>
+
+</menu>

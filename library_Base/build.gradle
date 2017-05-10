@@ -1,0 +1,38 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion COMPILE_SDK_VERSION
+    buildToolsVersion BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        minSdkVersion MIN_SDK_VERSION
+        targetSdkVersion TARGET_SDK_VERSION
+        versionCode 1
+        versionName "1.1"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false  //是否开启混淆
+            shrinkResources false //是否去除无用资源
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    //不需要其他国际化的几十种语言支持
+    defaultConfig {
+        resConfigs"zh"
+        resConfigs"en"
+    }
+    //引入http apache
+    //useLibrary 'org.apache.http.legacy'
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':library_AutoLayout')
+
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    compile 'com.loopj.android:android-async-http:1.4.9'
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'cn.pedant.sweetalert:library:1.3'
+}

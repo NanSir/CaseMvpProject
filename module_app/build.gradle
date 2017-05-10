@@ -1,0 +1,66 @@
+apply plugin: 'com.android.application'
+
+android {
+
+    compileSdkVersion COMPILE_SDK_VERSION
+    buildToolsVersion BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        applicationId "com.sir.app.tackle"
+        minSdkVersion MIN_SDK_VERSION
+        targetSdkVersion TARGET_SDK_VERSION
+        versionCode 4
+        versionName "1.2.2"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false //去除无用资源
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    signingConfigs {
+        release {//打包添加
+            v2SigningEnabled false
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
+    testCompile 'junit:junit:4.12'
+
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    compile project(':library_Base')
+    compile project(':library_Retrofit')
+    compile project(':library_CardStack')
+    compile project(':library_TabLayout')
+
+    //Ultra-Pull-To-Refresh框架是用来嵌套其他布局，实现下拉刷新和上拉加载的框架
+    compile 'in.srain.cube:ptr-load-more:1.0.6'
+    //ImageViews动画效果
+    compile 'com.flaviofaria:kenburnsview:1.0.7'
+    //视频播放器
+    compile 'fm.jiecao:jiecaovideoplayer:4.8.3'
+    //评星级别
+    compile('com.iarcuschin:simpleratingbar:0.1.5') {
+        exclude group: 'com.android.support'
+        exclude group: 'org.androidannotations'
+    }
+    //轻量级 动画库
+    compile 'com.willowtreeapps.spruce:spruce-android:1.0.0'
+    //TextView 动画库
+    compile 'hanks.xyz:htextview-library:0.1.3'
+    //检查内存泄漏
+    // debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4'
+    //检查界面卡顿
+    //compile 'com.github.markzhai:blockcanary-android:1.3.1'
+    // releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4'
+    //im.fir BugHD 检查更新
+    compile 'im.fir:fir-sdk:latest.integration@aar'
+}

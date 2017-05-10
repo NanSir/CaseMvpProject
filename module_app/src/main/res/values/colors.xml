@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#174785</color>
+    <color name="colorPrimaryDark">#0E3A67</color>
+    <color name="colorAccent">#33CCD6</color>
+
+    <color name="smoke">#707070</color>
+
+    <color name="red_btn_bg_color">#33CCD6</color>
+    <color name="red_btn_bg_pressed_color">#7AC5CD</color>
+
+</resources>

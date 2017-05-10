@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.MainActivity">
+
+    <FrameLayout
+        android:id="@+id/main_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="6dp">
+
+        <com.sir.app.tablayout.CommonTabLayout
+            android:id="@+id/main_tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:tl_iconHeight="23dp"
+            app:tl_iconWidth="23dp"
+            app:tl_indicator_bounce_enable="false"
+            app:tl_indicator_height="0dp"
+            app:tl_textSelectColor="?attr/colorPrimary"
+            app:tl_textUnselectColor="#66000000"
+            app:tl_textsize="12sp" />
+    </android.support.v7.widget.CardView>
+</LinearLayout>

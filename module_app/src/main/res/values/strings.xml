@@ -1,0 +1,78 @@
+<resources>
+    <string name="app_name">Case</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
+    <string name="hint_out">再按一次关闭程序</string>
+
+
+    <!--menu-->
+    <string name="all_down">倒下</string>
+    <string name="up_down">上下</string>
+    <string name="up_down_stack">上下堆栈</string>
+    <string name="display_usage">展开方式</string>
+    <string name="data_hint">什么也没有/(ㄒoㄒ)/~~</string>
+
+    <string name="video_is_played">"视频正在播放..."</string>
+    <string name="brief">简&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;介</string>
+    <string name="play">播&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;放</string>
+    <string name="movie_grade">评&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;分</string>
+    <string name="movie_release_date">上映日期</string>
+    <string name="movie_type">类&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;型</string>
+    <string name="movie_director">导&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;演</string>
+    <string name="movie_starring">主&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;演</string>
+    <string name="movie_story_brief">剧情简介</string>
+    <string name="movie_release_info">上映信息</string>
+    <string name="movie_duration">时&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;长</string>
+
+
+    <string name="share">分享</string>
+    <string name="about">关于</string>
+    <string name="out">退出</string>
+    <string name="settings">设置</string>
+    <string name="chapter">章节</string>
+    <string name="collect">收藏</string>
+    <string name="skin">皮肤</string>
+    <string name="cache">缓存</string>
+    <string name="download">下载</string>
+    <string name="clear">清除</string>
+    <string name="clear_cache">清除缓存</string>
+    <string name="news">新闻</string>
+    <string name="news_information">新闻资讯</string>
+    <string name="shadow">影讯</string>
+    <string name="movie_information">电影资讯</string>
+    <string name="video">视频</string>
+    <string name="live_video">视频直播</string>
+    <string name="cartoon">动漫</string>
+    <string name="Animated_cartoon">动画漫画</string>
+
+
+    <string name="choiceness">精选</string>
+    <string name="domestic">国产</string>
+    <string name="blood">热血</string>
+
+
+    <string name="about_point">基于Retrofit+RxJava+MVP的模式</string>
+    <string name="about_source">1.ButterKnife\n
+                                2.SweetAlert\n
+                                3.LiteOrm\n
+                                4.UniversalImageLoader\n
+                                5.KenBurnsView\n
+                                6.JieCaoVideoPlayer\n
+                                7.Spruce\n
+                                8.HTextView
+                                </string>
+
+
+    <string name="about_thanks">1.聚合数据(www.juhe.cn)提供影讯数据\n2.易源数据(www.showapi.com)提供新闻数据\n3.简影讯(https://fir.im/jyx)电影板块参考</string>
+    <string name="share_out_description">"Android练手项目MVP模式http://fir.im/Case"</string>
+
+
+    <string name="key_nightMode">key_nightMode</string>
+    <string name="key_theme_primary">key_theme_primary</string>
+    <string name="key_theme_accent">key_theme_accent</string>
+    <string name="key_clearCache">key_clearCache</string>
+    <string name="key_checkUpdates">key_checkUpdates</string>
+</resources>

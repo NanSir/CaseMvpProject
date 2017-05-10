@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".view.movie.activity.MovieDetailsActivity">
+
+    <include layout="@layout/item_toolbar_layout" />
+
+    <include layout="@layout/item_content_movie_detail" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/movie_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/svg_ic_detail"
+        app:layout_anchor="@+id/app_bar"
+        app:layout_anchorGravity="bottom|end" />
+
+    <Button
+        android:id="@+id/movie_purchase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@android:color/holo_red_dark"
+        android:text="特惠购票"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+</android.support.design.widget.CoordinatorLayout>

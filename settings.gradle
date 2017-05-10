@@ -1,0 +1,10 @@
+include ':module_app'
+
+
+
+include ':library_AColorful'
+include ':library_AutoLayout'
+include ':library_Base'
+include ':library_Retrofit'
+include ':library_CardStack'
+include ':library_TabLayout'

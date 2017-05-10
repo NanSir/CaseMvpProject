@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ImageButton
+        android:id="@+id/ibtn_close"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/transparent"
+        android:src="@mipmap/ic_close" />
+
+    <TextView
+        android:id="@+id/video_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="神盾局"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/video_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/video_title"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/video_title"
+        android:text="01:37:00"
+        android:textColor="@android:color/black" />
+
+
+    <Button
+        android:id="@+id/video_btn_play"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/video_title"
+        android:layout_marginTop="10dp"
+        android:background="?attr/colorAccent"
+        android:text="@string/play"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/video_btn_brief"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/video_btn_play"
+        android:layout_marginTop="8dp"
+        android:background="?attr/colorAccent"
+        android:text="@string/brief"
+        android:textColor="@android:color/white" />
+
+</RelativeLayout>

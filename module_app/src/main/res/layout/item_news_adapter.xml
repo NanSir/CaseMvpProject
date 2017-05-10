@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="6dp">
+
+    <ImageView
+        android:id="@+id/news_item_img"
+        android:layout_width="300px"
+        android:layout_height="200px"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/ic_fap" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="4dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/news_item_title"
+            android:layout_width="match_parent"
+            android:textSize="16sp"
+            android:layout_height="wrap_content"
+            android:text="标题" />
+
+        <TextView
+            android:id="@+id/news_item_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="时间" />
+
+    </RelativeLayout>
+</LinearLayout>

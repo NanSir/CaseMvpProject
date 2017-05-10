@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.sir.app.retrofit">
+    <!--定位权限-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!--保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!--获取sd卡写的权限，用于文件上传和下载-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--允许读取手机状态 用于创建BmobInstallation-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+
+
+    <application
+        android:name=".common.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_logo_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon, android:theme">
+
+        <meta-data
+            android:name="design_width"
+            android:value="1080"></meta-data>
+        <meta-data
+            android:name="design_height"
+            android:value="1920"></meta-data>
+
+        <!--im.fir-->
+        <meta-data
+            android:name="BUG_HD_SDK_GENERAL_KEY"
+            android:value="8e8300cd9439e7459ffc4f22310a00a1" />
+        <!-- 下载安装APK兼容Android7.0安装 -->
+        <!-- exported:要求必须为false，为true则会报安全异常-->
+        <!-- grantUriPermissions:true，表示授予 URI 临时访问权限-->
+        <!-- authorities 组件标识，按照江湖规矩,都以包名开头,避免和其它应用发生冲突-->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.sir.app.retrofit"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+
+        </provider>
+
+        <activity
+            android:name=".view.LeadActivity"
+            android:label="@string/app_name"
+            android:supportsRtl="true"
+            android:theme="@style/LeadAppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".view.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".view.WebViewActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".view.movie.activity.MovieDetailsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".view.video.activity.VideoPlayActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".view.AboutActivity"
+            android:label="@string/about"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".view.SettingActivity"
+            android:label="@string/settings"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".view.CollectActivity"
+            android:label="@string/collect"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".view.cartoon.activity.CartoonChapterActivity"
+            android:label="@string/chapter"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+
+    </application>
+
+</manifest>
