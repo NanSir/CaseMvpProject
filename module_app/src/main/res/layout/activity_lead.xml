@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="?attr/colorAccent"
+    android:orientation="vertical"
     tools:context=".view.LeadActivity">
 
 
@@ -16,7 +16,8 @@
         android:layout_alignBottom="@+id/lead_title"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
-        android:src="@drawable/svg_ic_lead" />
+        android:scaleType="centerCrop"
+        android:background="@drawable/svg_ic_lead" />
 
 
     <com.hanks.htextview.HTextView
@@ -24,8 +25,8 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_centerInParent="true"
-        android:textColor="?attr/colorPrimary"
         android:gravity="center"
+        android:textColor="?attr/colorPrimary"
         android:textSize="40sp"
         android:textStyle="italic|bold"
         app:animateType="anvil" />

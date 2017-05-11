@@ -108,6 +108,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             public void onTabSelect(int position) {
                 toolbarTitle.setText(getString(mTitles_son[position]));
                 setShowFragment(R.id.main_fragment, position);
+                getMyApplication().onClearMemoryClick();
             }
 
             @Override
@@ -188,15 +189,14 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onPause() {
+        super.onPause();
         System.gc();  //提醒系统及时回收
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        getMyApplication().onClearMemoryClick();
         getMyApplication().removeAll();
         //  System.exit(0);//正常退出App
     }

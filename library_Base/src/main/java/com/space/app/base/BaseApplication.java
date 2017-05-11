@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.util.Log;
 
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
@@ -167,15 +168,15 @@ public class BaseApplication extends Application {
             mImageOptionsBuilder = new DisplayImageOptions.Builder()
                     .resetViewBeforeLoading(false) // default
                     .delayBeforeLoading(0)
-                    .cacheInMemory(true) // 设置下载的图片是否缓存在内存中
+                    .cacheInMemory(false) // 设置下载的图片是否缓存在内存中
                     .cacheOnDisk(true) // 设置下载的图片是否缓存在SD卡中
                     .considerExifParams(false) // default
                     .imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2) // default
                     .bitmapConfig(Bitmap.Config.RGB_565) // /设置图片的解码类型
                     .displayer(new RoundedBitmapDisplayer(10));//设置图片的显示方式
-                                                                //RoundedBitmapDisplayer设置成圆角图片
-                                                                //FadeInBitmapDisplayer设置图片渐显的时间
-                                                                //SimpleBitmapDisplayer正常显示一张图片
+            //RoundedBitmapDisplayer设置成圆角图片
+            //FadeInBitmapDisplayer设置图片渐显的时间
+            //SimpleBitmapDisplayer正常显示一张图片
 
         }
         DisplayImageOptions options = mImageOptionsBuilder
@@ -187,12 +188,14 @@ public class BaseApplication extends Application {
 
     private void initImageLoader() {
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this)
+                .threadPoolSize(4) //线程池的大小建议1~5
                 .threadPriority(Thread.NORM_PRIORITY - 2)//设置当前线程的优先级
                 .denyCacheImageMultipleSizesInMemory()
                 .tasksProcessingOrder(QueueProcessingType.LIFO)
                 .memoryCache(new LruMemoryCache(2 * 1024 * 1024)) //可以通过自己的内存缓存实现
                 .memoryCacheSize(2 * 1024 * 1024)  // 内存缓存的最大值
                 .memoryCacheSizePercentage(13) // 内存高速缓存大小百分比
+                .diskCacheExtraOptions(480, 320, null)
                 .diskCacheFileNameGenerator(new Md5FileNameGenerator())// default为使用HASHCODE对UIL进行加密命名,还可以用MD5(new Md5FileNameGenerator())加密
                 .diskCacheFileCount(100)  // 可以缓存的文件数量
                 .diskCacheSize(50 * 1024 * 1024) // 50 Mb sd卡(本地)缓存的最大值
@@ -206,6 +209,7 @@ public class BaseApplication extends Application {
      * 清除内存缓存
      */
     public void onClearMemoryClick() {
+        Log.e("TAG", "清除内存缓存");
         ImageLoader.getInstance().clearMemoryCache();
     }
 
