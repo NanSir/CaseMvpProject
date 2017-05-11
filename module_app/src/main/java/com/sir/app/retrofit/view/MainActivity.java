@@ -187,6 +187,11 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 }).show();
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        System.gc();  //提醒系统及时回收
+    }
 
     @Override
     protected void onDestroy() {

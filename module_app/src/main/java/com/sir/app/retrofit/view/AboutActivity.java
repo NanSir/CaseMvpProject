@@ -77,4 +77,9 @@ public class AboutActivity extends BaseActivity implements AppBarLayout.OnOffset
         moviePoster.pause();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        System.gc();  //提醒系统及时回收
+    }
 }

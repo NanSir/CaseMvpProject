@@ -2,7 +2,6 @@ package com.sir.app.retrofit.view.cartoon.activity;
 
 import android.content.Context;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,8 +31,6 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.Bind;
-
-import static cz.msebera.android.httpclient.HttpHeaders.IF;
 
 /**
  * Created by zhuyinan on 2017/5/4.
@@ -140,7 +137,7 @@ public class CartoonChapterActivity extends BaseMvpActivity<CartoonModelImpl, Ca
     public void onFailure(String msg) {
         ToolAlert.showLong(getContext(), msg);
         if (adapter.getItemCount() == 0) {
-            findViewById(R.id.coll_start).setVisibility(View.VISIBLE);
+            findViewById(R.id.layout_no_more).setVisibility(View.VISIBLE);
         }
     }
 
@@ -155,8 +152,10 @@ public class CartoonChapterActivity extends BaseMvpActivity<CartoonModelImpl, Ca
     private void setData(List<Chapter> list) {
         adapter.setData(list);
         adapter.notifyDataSetChanged();
+
+        findViewById(R.id.progress).setVisibility(View.GONE);
         if (adapter.getItemCount() == 0) {
-            findViewById(R.id.coll_start).setVisibility(View.VISIBLE);
+            findViewById(R.id.layout_no_more).setVisibility(View.VISIBLE);
         }
     }
 }

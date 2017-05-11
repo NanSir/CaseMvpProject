@@ -18,10 +18,8 @@ import com.sir.app.retrofit.view.news.adapter.NewsContentAdapter;
 import com.space.app.base.BaseRecyclerAdapter;
 import com.space.app.base.ViewHolder;
 import com.space.app.base.data.ACache;
-import com.space.app.base.tools.ToolAlert;
 import com.space.app.base.tools.ToolSnackbar;
 
-import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -122,6 +120,7 @@ public class NewsSonFragment extends BaseMvpFragment<NewsModelImpl, NewsPresente
 
     @Override
     public void onSuccess(int code, Object object) {
+        findViewById(R.id.progress).setVisibility(View.GONE);
         NewsContent newsContent = (NewsContent) object;
         ACache.get(getContext()).put(channelId, newsContent);
         setData(newsContent.getPagebean().getContentlist());
@@ -144,5 +143,10 @@ public class NewsSonFragment extends BaseMvpFragment<NewsModelImpl, NewsPresente
             adapter.clear();
         }
         adapter.addItem(contentlist);
+
+        findViewById(R.id.progress).setVisibility(View.GONE);
+        if (adapter.getItemCount() == 0) {
+            findViewById(R.id.layout_no_more).setVisibility(View.VISIBLE);
+        }
     }
 }

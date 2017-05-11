@@ -96,6 +96,7 @@ public class VideoConditionBFragment extends BaseMvpFragment<VideoModelImpl, Vid
         });
         List<VideoInfo> videoInfo = (List<VideoInfo>) getArguments().get("value");
         if (videoInfo != null) {
+            findViewById(R.id.progress).setVisibility(View.GONE);
             videoAdapterA.addItem(videoInfo);
         }
     }
@@ -124,5 +125,9 @@ public class VideoConditionBFragment extends BaseMvpFragment<VideoModelImpl, Vid
 
     private void setData(List<VideoType> videoInfo) {
         videoAdapterA.addItem(videoInfo);
+        findViewById(R.id.progress).setVisibility(View.GONE);
+        if (videoAdapterA.getItemCount() == 0) {
+            findViewById(R.id.layout_no_more).setVisibility(View.VISIBLE);
+        }
     }
 }

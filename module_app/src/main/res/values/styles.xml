@@ -14,9 +14,6 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="LeadAppTheme" parent="AppBaseTheme.NoActionBar">
-        <item name="android:windowBackground">@mipmap/ic_lead_bg</item>
-    </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 

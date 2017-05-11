@@ -19,30 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <LinearLayout
-            android:id="@+id/coll_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <ImageView
-                android:id="@+id/no_more"
-                android:layout_width="140dp"
-                android:layout_height="140dp"
-                android:src="@drawable/svg_ic_no_more" />
-
-            <TextView
-                android:id="@+id/tv_hint"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/no_more"
-                android:text="@string/data_hint"
-                android:textSize="16sp" />
-
-        </LinearLayout>
+        <include layout="@layout/item_loading_status" />
 
     </RelativeLayout>
 

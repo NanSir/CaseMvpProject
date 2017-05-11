@@ -71,6 +71,10 @@ public class MovieMainFragment extends BaseMvpFragment<MovieModelImpl, MoviePres
     }
 
     public void setData(MovieData movieData) {
+        findViewById(R.id.progress).setVisibility(View.GONE);
+        if (movieData == null) {
+            findViewById(R.id.no_more).setVisibility(View.VISIBLE);
+        }
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
         adapter.addFrag(MovieListFragment.newInstance(movieData.getData()[0].getData()), "正在热映");
         adapter.addFrag(MovieListFragment.newInstance(movieData.getData()[1].getData()), "即将上映");

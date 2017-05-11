@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="1651dp"
-    android:height="1024dp"
+    android:width="30dp"
+    android:height="24dp"
     android:viewportHeight="1024"
     android:viewportWidth="1651">
 
@@ -12,4 +12,5 @@
         24.864-54.862 55.538v667.094c0 30.673 24.562 55.538 54.862 55.538h768.705c30.282
         0 54.863-24.864 54.863-55.538v-272.924c30.553 32.395 392.742 322.709 392.742
         322.709 55.623 0 45.866-10.628 45.866-66.899v-620.846z" />
+
 </vector>

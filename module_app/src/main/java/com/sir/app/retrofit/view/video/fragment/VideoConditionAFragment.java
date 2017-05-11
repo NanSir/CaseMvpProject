@@ -98,13 +98,19 @@ public class VideoConditionAFragment extends BaseMvpFragment<VideoModelImpl, Vid
         for (int i = 0; i < banners.size(); i++) {
             imagesUrl[i] = banners.get(i).getPic();
         }
-        bannerView.setImagesUrl(getContext(),imagesUrl);
+        bannerView.setImagesUrl(getContext(), imagesUrl);
     }
 
     //设置数据
     private void setData(List<VideoInfo> list) {
         adapterA.addItem(list);
         adapterA.notifyDataSetChanged();
+
+        findViewById(R.id.progress).setVisibility(View.GONE);
+
+        if (adapterA.getItemCount() == 0) {
+            findViewById(R.id.layout_no_more).setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

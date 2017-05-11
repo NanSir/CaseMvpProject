@@ -1,7 +1,6 @@
 package com.sir.app.retrofit.view;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.SwitchPreference;
@@ -25,9 +24,11 @@ public class FragmentSetting extends PreferenceFragment implements Preference.On
     Preference mThemePrimary;
     Preference mThemeAccent;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         addPreferencesFromResource(R.xml.preferences_setting);
         findPreference(getString(R.string.key_checkUpdates)).setOnPreferenceClickListener(this);
         mThemePrimary = findPreference(getString(R.string.key_theme_primary));
@@ -44,7 +45,7 @@ public class FragmentSetting extends PreferenceFragment implements Preference.On
                     @Override
                     public boolean onPreferenceChange(Preference preference, Object obj) {
                         boolean skin = (boolean) obj;
-                        Colorful.config(getContext()).night(skin).apply();
+                        Colorful.config(getActivity()).night(skin).apply();
                         mThemePrimary.setEnabled(!skin);
                         mThemeAccent.setEnabled(!skin);
                         restartActivity();
@@ -74,7 +75,7 @@ public class FragmentSetting extends PreferenceFragment implements Preference.On
                 }
                 break;
             case 4:
-                new UpdatesUtils().checkUpdates(getContext());
+                new UpdatesUtils().checkUpdates(getActivity());
                 break;
         }
         return true;
@@ -150,14 +151,14 @@ public class FragmentSetting extends PreferenceFragment implements Preference.On
     }
 
     public void showColorPickerDialog(final boolean isPrimary) {
-        ColorPickerDialog dialog = new ColorPickerDialog(getContext());
+        ColorPickerDialog dialog = new ColorPickerDialog(getActivity());
         dialog.setOnColorSelectedListener(new ColorPickerDialog.OnColorSelectedListener() {
             @Override
             public void onColorSelected(Colorful.ThemeColor color) {
                 if (isPrimary) {
-                    Colorful.config(getContext()).primaryColor(color).apply();
+                    Colorful.config(getActivity()).primaryColor(color).apply();
                 } else {
-                    Colorful.config(getContext()).accentColor(color).apply();
+                    Colorful.config(getActivity()).accentColor(color).apply();
                 }
                 restartActivity();
             }
@@ -168,7 +169,7 @@ public class FragmentSetting extends PreferenceFragment implements Preference.On
     /**
      * 改变主题颜色重启Activity
      */
-    private void  restartActivity(){
+    private void restartActivity() {
         getActivity().finish();
         getActivity().startActivity(getActivity().getIntent());
     }

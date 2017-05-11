@@ -3,7 +3,6 @@ package com.sir.app.retrofit.view.cartoon.fragment;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.View;
 
 import com.sir.app.retrofit.R;
@@ -14,14 +13,12 @@ import com.sir.app.retrofit.model.cartoon.CartoonModelImpl;
 import com.sir.app.retrofit.model.cartoon.bean.BookCartoon;
 import com.sir.app.retrofit.model.cartoon.bean.BookReturn;
 import com.sir.app.retrofit.presenter.cartoon.CartoonPresenterImpl;
-import com.sir.app.retrofit.view.WebViewActivity;
 import com.sir.app.retrofit.view.cartoon.activity.CartoonChapterActivity;
 import com.sir.app.retrofit.view.cartoon.adapter.CartoonAdapter;
 import com.space.app.base.BaseRecyclerAdapter;
 import com.space.app.base.ViewHolder;
 import com.space.app.base.data.ACache;
 import com.space.app.base.tools.ToolAlert;
-import com.space.app.base.tools.ToolSnackbar;
 
 import java.io.Serializable;
 import java.util.LinkedHashMap;
@@ -29,7 +26,6 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.Bind;
-import butterknife.OnClick;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import in.srain.cube.views.ptr.PtrDefaultHandler2;
 import in.srain.cube.views.ptr.PtrFrameLayout;
@@ -131,6 +127,11 @@ public class BloodFragment extends BaseMvpFragment<CartoonModelImpl, CartoonPres
             mAdapter.clear();
         }
         mAdapter.addItem(list);
+
+        findViewById(R.id.progress).setVisibility(View.GONE);
+        if (mAdapter.getItemCount() == 0) {
+            findViewById(R.id.layout_no_more).setVisibility(View.VISIBLE);
+        }
     }
 
 }

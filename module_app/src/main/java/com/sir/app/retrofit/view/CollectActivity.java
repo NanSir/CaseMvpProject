@@ -82,8 +82,9 @@ public class CollectActivity extends BaseActivity {
             }
         });
 
+        findViewById(R.id.progress).setVisibility(View.GONE);
         if (adapter.getItemCount() == 0) {
-            findViewById(R.id.coll_start).setVisibility(View.VISIBLE);
+            findViewById(R.id.layout_no_more).setVisibility(View.VISIBLE);
         }
     }
 
