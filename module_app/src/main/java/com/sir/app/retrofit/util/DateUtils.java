@@ -160,6 +160,24 @@ public class DateUtils {
         return date.getTime() / 1000;
     }
 
+    public static String getStringMMSS(long time) {
+        time = time / 1000;
+        int s = (int) (time % 60);
+        int m = (int) (time / 60 % 60);
+        int h = (int) (time / 3600);
+        m = h * 60 + m;
+        return (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
+    }
+
+
+    public static int getStringMM(long time) {
+        time = time / 1000;
+        int m = (int) (time / 60 % 60);
+        int h = (int) (time / 3600);
+        return h * 60 + m;
+    }
+
+
     /**
      * 将日期格式转化为时间(秒数)
      *

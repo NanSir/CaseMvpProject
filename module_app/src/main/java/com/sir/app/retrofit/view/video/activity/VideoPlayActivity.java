@@ -3,17 +3,21 @@ package com.sir.app.retrofit.view.video.activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
+import android.support.annotation.IdRes;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.CheckBox;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
 import com.sir.app.retrofit.R;
 import com.sir.app.retrofit.base.BaseMvpActivity;
 import com.sir.app.retrofit.base.BaseView;
@@ -25,6 +29,7 @@ import com.sir.app.retrofit.model.video.bean.VideoInfo;
 import com.sir.app.retrofit.model.video.bean.VideoRes;
 import com.sir.app.retrofit.model.video.bean.VideoType;
 import com.sir.app.retrofit.presenter.video.VideoPresenterImpl;
+import com.sir.app.retrofit.view.PlayerFragment;
 import com.sir.app.retrofit.view.video.adapter.VideoAdapterB;
 import com.sir.app.retrofit.view.video.dialog.VideoIntroDialog;
 import com.space.app.base.BaseRecyclerAdapter;
@@ -33,8 +38,6 @@ import com.space.app.base.tools.ToolSnackbar;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 
 /**
  * 视频播放器
@@ -55,13 +58,16 @@ public class VideoPlayActivity extends BaseMvpActivity<VideoModelImpl, VideoPres
     CollectDevice device;
     VideoAdapterB adapter;
 
-    @Bind(R.id.video_videoPlayer)
-    JCVideoPlayerStandard videoPlayer;
-    JCVideoPlayer.JCAutoFullscreenListener sensorEventListener;
-    SensorManager sensorManager;
+
     VideoIntroDialog dialog;
     String mediaId;
     VideoRes videoRes;
+
+    @Bind(R.id.video_content)
+    RelativeLayout videoContent;
+
+    LinearLayout.LayoutParams videoContentParams;
+    LinearLayout.LayoutParams MATCH_PARENT;
 
     @Override
     protected BaseView getViewImp() {
@@ -75,11 +81,14 @@ public class VideoPlayActivity extends BaseMvpActivity<VideoModelImpl, VideoPres
 
     @Override
     public void initMvpView(View view) {
-        videoPlayer.thumbImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        videoPlayer.backButton.setVisibility(View.INVISIBLE);
-        videoPlayer.tinyBackImageView.setVisibility(View.INVISIBLE);
-        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        sensorEventListener = new JCVideoPlayer.JCAutoFullscreenListener();
+        //保持常亮
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        // 隐藏状态栏
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //记住大小
+        videoContentParams = (LinearLayout.LayoutParams) videoContent.getLayoutParams();
+        MATCH_PARENT = new LinearLayout.LayoutParams(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
 
         adapter = new VideoAdapterB(getContext());
         recyclerViewExpand.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -124,17 +133,6 @@ public class VideoPlayActivity extends BaseMvpActivity<VideoModelImpl, VideoPres
         device = new CollectDevice();//收藏
         mediaId = getIntent().getStringExtra("mediaId");
         mPresenter.getVideoInfo(getContext(), mediaId);
-        videoPlayer.backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (JCVideoPlayer.backPress()) {
-                    return;
-                } else {
-                    finish();
-                }
-            }
-        });
-
         //点击收藏
         videoCollect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,6 +141,19 @@ public class VideoPlayActivity extends BaseMvpActivity<VideoModelImpl, VideoPres
                 ToolAlert.showLong(getContext(), videoCollect.isChecked() ? "收藏成功" : "取消收藏");
             }
         });
+    }
+
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            //横屏
+            videoContent.setLayoutParams(MATCH_PARENT);
+        } else {
+            //竖屏
+            videoContent.setLayoutParams(videoContentParams);
+        }
     }
 
     @Override
@@ -196,49 +207,20 @@ public class VideoPlayActivity extends BaseMvpActivity<VideoModelImpl, VideoPres
      * @param videoRes
      */
     private void setVideoPlayer(VideoRes videoRes) {
-        String thumUrl;
+        String themeUrl;
         if (!TextUtils.isEmpty(videoRes.getPic())) {//如果没有海报图
-            thumUrl = videoRes.getPic();
+            themeUrl = videoRes.getPic();
         } else {//用传入的
-            thumUrl = getIntent().getStringExtra("mediaPic");
+            themeUrl = getIntent().getStringExtra("mediaPic");
         }
         videoRes.setDataId(mediaId);//用于收藏数据
-        if (!thumUrl.isEmpty()) {
-            videoRes.setPic(thumUrl); //用于收藏数据
-            ImageLoader.getInstance().displayImage(thumUrl,
-                    videoPlayer.thumbImageView,
-                    getMyApplication().getImageOptions());
-        }
+        videoRes.setPic(themeUrl); //用于收藏数据
         if (!TextUtils.isEmpty(videoRes.getVideoUrl())) {
-            videoPlayer.setUp(videoRes.getVideoUrl(),//设置视频URL
-                    JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, videoRes.getTitle());
-            videoPlayer.startButton.performClick();//开始播放
-            videoPlayer.backButton.setVisibility(View.VISIBLE);
-            videoPlayer.titleTextView.setVisibility(View.GONE);
+            replaceFragment(R.id.player_fragment, PlayerFragment.newInstance(videoRes.getVideoUrl(), videoRes.getTitle(), themeUrl,false));
         }
     }
 
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Sensor accelerometerSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        sensorManager.registerListener(sensorEventListener, accelerometerSensor, SensorManager.SENSOR_DELAY_NORMAL);
+    public void replaceFragment(@IdRes int id, Fragment fragment) {
+        getSupportFragmentManager().beginTransaction().replace(id, fragment).commit();
     }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        sensorManager.unregisterListener(sensorEventListener);
-        JCVideoPlayer.releaseAllVideos();
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (JCVideoPlayer.backPress()) {
-            return;
-        }
-        super.onBackPressed();
-    }
-
 }
