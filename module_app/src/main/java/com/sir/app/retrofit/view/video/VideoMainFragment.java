@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 
 import com.sir.app.retrofit.R;
@@ -19,6 +20,7 @@ import com.sir.app.retrofit.model.video.bean.VideoType;
 import com.sir.app.retrofit.presenter.video.VideoPresenterImpl;
 import com.sir.app.retrofit.view.video.fragment.VideoConditionAFragment;
 import com.sir.app.retrofit.view.video.fragment.VideoConditionBFragment;
+import com.sir.app.retrofit.view.video.live.LiveMainFragment;
 import com.space.app.base.data.ACache;
 import com.space.app.base.tools.ToolAlert;
 
@@ -63,12 +65,15 @@ public class VideoMainFragment extends BaseMvpFragment<VideoModelImpl, VideoPres
 
     @Override
     public void doBusiness(Context mContext) {
-        VideoRes res = (VideoRes) ACache.get(getContext()).getAsObject("VideoHomeInfo");
-        if (res == null) {
-            mPresenter.getHomeInfo(getContext());
-        } else {
-            setData(res);
-        }
+        mPresenter.getHomeInfo(getContext());
+
+        //获取缓存数据
+//        VideoRes res = (VideoRes) ACache.get(getContext()).getAsObject("VideoHomeInfo");
+//        if (res == null) {
+//            mPresenter.getHomeInfo(getContext());
+//        } else {
+//            setData(res);
+//        }
     }
 
     @Override
@@ -130,13 +135,14 @@ public class VideoMainFragment extends BaseMvpFragment<VideoModelImpl, VideoPres
                     adapter.addFrag(fragmentC, videoType.getTitle());
                     break;
                 case "直播专区":
-                    VideoConditionAFragment fragmentD = new VideoConditionAFragment();
-                    bundle = new Bundle();
-                    bundle.putSerializable("value", (Serializable) videoType.getChildList());
-                    bundle.putSerializable("banner", (Serializable) banner);
-                    bundle.putString("catalogId", getCatalogId(videoType.getMoreURL()));
-                    fragmentD.setArguments(bundle);
-                    adapter.addFrag(fragmentD, videoType.getTitle());
+//                    VideoConditionAFragment fragmentD = new VideoConditionAFragment();
+//                    bundle = new Bundle();
+//                    bundle.putSerializable("value", (Serializable) videoType.getChildList());
+//                    bundle.putSerializable("banner", (Serializable) banner);
+//                    bundle.putString("catalogId", getCatalogId(videoType.getMoreURL()));
+//                    fragmentD.setArguments(bundle);
+//                    adapter.addFrag(fragmentD, videoType.getTitle());
+                    adapter.addFrag(new LiveMainFragment(), "直播专区");
                     break;
                 case "微电影":
                     VideoConditionBFragment fragmentE = new VideoConditionBFragment();
@@ -170,6 +176,22 @@ public class VideoMainFragment extends BaseMvpFragment<VideoModelImpl, VideoPres
                     bundle.putString("catalogId", getCatalogId(videoType.getMoreURL()));
                     fragmentH.setArguments(bundle);
                     adapter.addFrag(fragmentH, videoType.getTitle());
+                    break;
+                case "大片抢先看":
+                    VideoConditionBFragment fragmentI = new VideoConditionBFragment();
+                    bundle = new Bundle();
+                    bundle.putSerializable("value", (Serializable) videoType.getChildList());
+                    bundle.putString("catalogId", getCatalogId(videoType.getMoreURL()));
+                    fragmentI.setArguments(bundle);
+                    adapter.addFrag(fragmentI, videoType.getTitle());
+                    break;
+                case "香港映象":
+                    VideoConditionBFragment fragmentJ = new VideoConditionBFragment();
+                    bundle = new Bundle();
+                    bundle.putSerializable("value", (Serializable) videoType.getChildList());
+                    bundle.putString("catalogId", getCatalogId(videoType.getMoreURL()));
+                    fragmentJ.setArguments(bundle);
+                    adapter.addFrag(fragmentJ, videoType.getTitle());
                     break;
             }
         }
