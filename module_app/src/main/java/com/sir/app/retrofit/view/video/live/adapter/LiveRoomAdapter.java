@@ -30,7 +30,7 @@ public class LiveRoomAdapter extends BaseRecyclerAdapter<LiveDetails> {
         holder.setText(R.id.live_title,details.getTitle());
         holder.setText(R.id.live_anchor,details.getNick());
 
-        ImageLoader.getInstance().displayImage(details.getThumb(), (ImageView) holder.getView(R.id.live_poster));
+        ImageLoader.getInstance().displayImage(details.getThumb(), (ImageView) holder.getView(R.id.live_poster),getImageOptions());
     }
 
 }

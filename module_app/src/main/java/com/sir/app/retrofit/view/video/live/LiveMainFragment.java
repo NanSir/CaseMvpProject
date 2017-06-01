@@ -83,6 +83,7 @@ public class LiveMainFragment extends BaseMvpFragment<LiveModelImpl, LivePresent
             List<LiveChannel> liveChannels = (List<LiveChannel>) object;
             setMenu(liveChannels);
         } else if (code == 101) {
+            findViewById(R.id.progress).setVisibility(View.GONE);
             RecommendInfo recommendInfo = (RecommendInfo) object;
             recommendAdapter.addItem(recommendInfo.getRoom());
             recommendAdapter.notifyDataSetChanged();

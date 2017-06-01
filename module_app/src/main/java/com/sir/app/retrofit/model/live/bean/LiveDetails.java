@@ -1,10 +1,12 @@
 package com.sir.app.retrofit.model.live.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by zhuyinan on 2017/5/27.
  */
 
-public class LiveDetails {
+public class LiveDetails implements Serializable{
 
     private String id;
 

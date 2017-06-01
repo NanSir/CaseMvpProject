@@ -10,8 +10,10 @@ import android.view.View;
 
 import com.sir.app.retrofit.R;
 import com.sir.app.retrofit.model.live.bean.LiveChannel;
+import com.sir.app.retrofit.view.video.live.activity.ChannelActivity;
 import com.sir.app.retrofit.view.video.live.adapter.CategoriesAdapter;
 import com.space.app.base.BaseFragmentV4;
+import com.space.app.base.BaseRecyclerAdapter;
 
 import java.io.Serializable;
 import java.util.List;
@@ -43,7 +45,20 @@ public class CategoriesFragment extends BaseFragmentV4 {
 
     @Override
     public void doBusiness(Context mContext) {
+        adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Object o, int position) {
+                LiveChannel channel = adapter.getItem(position);
+                getOperation().addParameter("slug", channel.getSlug())
+                        .addParameter("channelTitle", channel.getName())
+                        .forward(ChannelActivity.class);
+            }
 
+            @Override
+            public void onItemLongClick(Object o, int position) {
+
+            }
+        });
 
     }
 

@@ -13,9 +13,8 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.READ_LOGS" />
-
 
 
     <application
@@ -105,6 +104,15 @@
             android:label="@string/chapter"
             android:theme="@style/AppTheme.NoActionBar" />
 
+        <activity
+            android:name=".view.video.live.activity.RoomActivity"
+            android:label="@string/chapter"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".view.video.live.activity.ChannelActivity"
+            android:label="@string/chapter"
+            android:theme="@style/AppTheme.NoActionBar" />
 
     </application>
 

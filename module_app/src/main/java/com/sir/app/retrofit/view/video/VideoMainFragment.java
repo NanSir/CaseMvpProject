@@ -66,21 +66,15 @@ public class VideoMainFragment extends BaseMvpFragment<VideoModelImpl, VideoPres
     @Override
     public void doBusiness(Context mContext) {
         mPresenter.getHomeInfo(getContext());
-
-        //获取缓存数据
-//        VideoRes res = (VideoRes) ACache.get(getContext()).getAsObject("VideoHomeInfo");
-//        if (res == null) {
-//            mPresenter.getHomeInfo(getContext());
-//        } else {
-//            setData(res);
-//        }
     }
 
     @Override
     public void onFailure(String msg) {
-
-
         ToolAlert.showShort(getContext(), msg);
+        VideoRes res = (VideoRes) ACache.get(getContext()).getAsObject("VideoHomeInfo");
+        if (res != null) {
+            setData(res);
+        }
     }
 
     @Override

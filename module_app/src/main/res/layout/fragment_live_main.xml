@@ -1,29 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".view.video.live.LiveMainFragment">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:fitsSystemWindows="true">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="460px"
+            app:layout_scrollFlags="scroll|enterAlways">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/live_categories_viewPage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </FrameLayout>
+    </android.support.design.widget.AppBarLayout>
+
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:background="@color/blue_btn_bg_color"
-        android:layout_height="160dp">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/live_categories_viewPage"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/live_recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <include layout="@layout/item_loading_status" />
+
     </RelativeLayout>
 
-
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/live_recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

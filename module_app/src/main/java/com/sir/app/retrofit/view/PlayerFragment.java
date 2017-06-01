@@ -94,7 +94,9 @@ public class PlayerFragment extends BaseFragmentV4 {
                 @Override
                 public void onPrepared(PLMediaPlayer plMediaPlayer) {
                     findViewById(R.id.progress).setVisibility(View.GONE);
-                    plVideo.start();
+                    if (plVideo != null) {
+                        plVideo.start();
+                    }
                 }
             });
             //直播，则底层会有一些播放优化
@@ -255,6 +257,10 @@ public class PlayerFragment extends BaseFragmentV4 {
 
     //退出
     private void onClickBack() {
+        if (getArguments().getBoolean("isLive")){
+            getActivity().finish();
+            return;
+        }
         if (getActivity().getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
             getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         } else {
