@@ -9,7 +9,7 @@ android {
         applicationId "com.sir.app.tackle"
         minSdkVersion MIN_SDK_VERSION
         targetSdkVersion TARGET_SDK_VERSION
-        versionCode 5
+        versionCode 6
         versionName "1.2.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
