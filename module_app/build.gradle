@@ -11,8 +11,8 @@ android {
         targetSdkVersion TARGET_SDK_VERSION
         versionCode 6
         versionName "1.2.4"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        resConfig "zh"
+        resConfig("xhdpi")
     }
     buildTypes {
         release {
