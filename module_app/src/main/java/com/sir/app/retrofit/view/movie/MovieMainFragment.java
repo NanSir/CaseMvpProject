@@ -11,7 +11,7 @@ import com.sir.app.retrofit.base.BaseView;
 import com.sir.app.retrofit.common.ViewPagerAdapter;
 import com.sir.app.retrofit.contract.movie.MovieContract;
 import com.sir.app.retrofit.model.movie.MovieModelImpl;
-import com.sir.app.retrofit.model.movie.base.MovieData;
+import com.sir.app.retrofit.model.movie.bean.MovieData;
 import com.sir.app.retrofit.presenter.movie.MoviePresenterImpl;
 import com.sir.app.retrofit.view.movie.fragment.MovieListFragment;
 import com.space.app.base.data.ACache;

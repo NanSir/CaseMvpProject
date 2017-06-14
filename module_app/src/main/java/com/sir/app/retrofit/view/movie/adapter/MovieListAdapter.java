@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import com.iarcuschin.simpleratingbar.SimpleRatingBar;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.sir.app.retrofit.R;
-import com.sir.app.retrofit.model.movie.base.MovieModel;
+import com.sir.app.retrofit.model.movie.bean.MovieModel;
 import com.sir.app.retrofit.view.widget.TagGroup;
 import com.space.app.base.BaseRecyclerAdapter;
 import com.space.app.base.ViewHolder;

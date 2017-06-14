@@ -1,17 +1,15 @@
-package com.sir.app.retrofit.model.movie.base;
+package com.sir.app.retrofit.model.movie.bean;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
- * Created by zhuyinan on 2017/4/14.
+ * Created by zhuyinan on 2017/04/11
  */
-
-public class More implements Serializable {
+public class Story implements Serializable {
 
     private String showname;
 
-    private List<Label> data;
+    private StoryBrief data;
 
     public String getShowname() {
         return showname;
@@ -21,11 +19,11 @@ public class More implements Serializable {
         this.showname = showname;
     }
 
-    public List<Label> getData() {
+    public StoryBrief getData() {
         return data;
     }
 
-    public void setData(List<Label> data) {
+    public void setData(StoryBrief data) {
         this.data = data;
     }
 

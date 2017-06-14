@@ -5,7 +5,7 @@ import android.content.Context;
 import com.sir.app.retrofit.base.BaseModel;
 import com.sir.app.retrofit.base.BasePresenter;
 import com.sir.app.retrofit.base.BaseView;
-import com.sir.app.retrofit.model.movie.base.MovieData;
+import com.sir.app.retrofit.model.movie.bean.MovieData;
 
 import rx.Observable;
 

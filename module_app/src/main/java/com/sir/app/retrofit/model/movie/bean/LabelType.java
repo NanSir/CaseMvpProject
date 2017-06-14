@@ -1,15 +1,15 @@
-package com.sir.app.retrofit.model.movie.base;
+package com.sir.app.retrofit.model.movie.bean;
 
 import java.io.Serializable;
 
 /**
  * Created by zhuyinan on 2017/04/11
  */
-public class Story implements Serializable {
+public class LabelType implements Serializable {
 
     private String showname;
 
-    private StoryBrief data;
+    private LabelGroup data;
 
     public String getShowname() {
         return showname;
@@ -19,11 +19,11 @@ public class Story implements Serializable {
         this.showname = showname;
     }
 
-    public StoryBrief getData() {
+    public LabelGroup getData() {
         return data;
     }
 
-    public void setData(StoryBrief data) {
+    public void setData(LabelGroup data) {
         this.data = data;
     }
 

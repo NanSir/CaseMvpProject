@@ -2,7 +2,7 @@ package com.sir.app.retrofit.transformer;
 
 import android.util.Log;
 
-import com.sir.app.retrofit.model.movie.base.MovieResponse;
+import com.sir.app.retrofit.model.movie.bean.MovieResponse;
 import com.sir.app.retrofit.net.exception.ExceptionHandle;
 import com.sir.app.retrofit.net.exception.ServerException;
 

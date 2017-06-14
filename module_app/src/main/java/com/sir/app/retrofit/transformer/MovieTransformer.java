@@ -1,6 +1,6 @@
 package com.sir.app.retrofit.transformer;
 
-import com.sir.app.retrofit.model.movie.base.MovieResponse;
+import com.sir.app.retrofit.model.movie.bean.MovieResponse;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;

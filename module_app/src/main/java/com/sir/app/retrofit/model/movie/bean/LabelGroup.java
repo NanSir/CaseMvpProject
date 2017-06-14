@@ -1,4 +1,4 @@
-package com.sir.app.retrofit.model.movie.base;
+package com.sir.app.retrofit.model.movie.bean;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -3,12 +3,9 @@ package com.sir.app.retrofit.presenter.movie;
 import android.content.Context;
 
 import com.sir.app.retrofit.contract.movie.MovieContract;
-import com.sir.app.retrofit.model.movie.base.MovieData;
-import com.sir.app.retrofit.model.movie.base.MovieModel;
+import com.sir.app.retrofit.model.movie.bean.MovieData;
 import com.sir.app.retrofit.net.callback.RxSubscriber;
 import com.sir.app.retrofit.net.exception.ResponseThrowable;
-
-import java.util.List;
 
 /**
  * Created by zhuyinan on 2017/04/11

@@ -1,8 +1,8 @@
 package com.sir.app.retrofit.api.movie;
 
 import com.sir.app.retrofit.api.NetWorkApi;
-import com.sir.app.retrofit.model.movie.base.MovieData;
-import com.sir.app.retrofit.model.movie.base.MovieResponse;
+import com.sir.app.retrofit.model.movie.bean.MovieData;
+import com.sir.app.retrofit.model.movie.bean.MovieResponse;
 
 import retrofit2.http.GET;
 import retrofit2.http.Query;

@@ -1,4 +1,4 @@
-package com.sir.app.retrofit.model.movie.base;
+package com.sir.app.retrofit.model.movie.bean;
 /**
  * Created by zhuyinan on 2017/04/11
  */

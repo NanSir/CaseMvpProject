@@ -28,6 +28,9 @@ public class MyApplication extends BaseApplication {
         initDBUtils();
         initColorful();
         FIR.init(this);
+
+        //日志收集
+        Thread.setDefaultUncaughtExceptionHandler(ErrorLogCollector.getInstance().getUncaughtException());
     }
 
     /**

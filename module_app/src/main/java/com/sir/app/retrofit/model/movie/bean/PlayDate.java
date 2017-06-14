@@ -1,7 +1,4 @@
-package com.sir.app.retrofit.model.movie.base;
-
-import android.os.Parcel;
-import android.os.Parcelable;
+package com.sir.app.retrofit.model.movie.bean;
 
 import java.io.Serializable;
 

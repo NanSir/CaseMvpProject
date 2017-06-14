@@ -6,6 +6,10 @@ import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
+/**
+ * Created by zhuyinan on 2017/4/22.
+ */
+
 public class DefaultTransformer<T> implements Observable.Transformer<HttpDefaultResponse<T>, T> {
     @Override
     public Observable<T> call(Observable<HttpDefaultResponse<T>> httpResponseObservable) {

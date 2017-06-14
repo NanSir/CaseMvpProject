@@ -5,7 +5,7 @@ import android.content.Context;
 import com.sir.app.retrofit.api.NetWorkApi;
 import com.sir.app.retrofit.api.movie.MovieApi;
 import com.sir.app.retrofit.contract.movie.MovieContract;
-import com.sir.app.retrofit.model.movie.base.MovieData;
+import com.sir.app.retrofit.model.movie.bean.MovieData;
 import com.sir.app.retrofit.net.http.HttpUtils;
 import com.sir.app.retrofit.transformer.MovieTransformer;
 

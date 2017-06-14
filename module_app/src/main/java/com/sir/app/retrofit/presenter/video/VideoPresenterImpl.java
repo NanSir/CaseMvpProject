@@ -1,7 +1,6 @@
 package com.sir.app.retrofit.presenter.video;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.sir.app.retrofit.contract.video.VideoContract;
 import com.sir.app.retrofit.model.video.bean.VideoRes;
