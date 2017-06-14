@@ -9,8 +9,8 @@ android {
         applicationId "com.sir.app.tackle"
         minSdkVersion MIN_SDK_VERSION
         targetSdkVersion TARGET_SDK_VERSION
-        versionCode 6
-        versionName "1.2.4"
+        versionCode 7
+        versionName "1.3.0"
         resConfig "zh"
         resConfig("xhdpi")
     }
