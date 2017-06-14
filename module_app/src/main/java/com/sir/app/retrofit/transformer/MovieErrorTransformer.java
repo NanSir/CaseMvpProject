@@ -1,7 +1,5 @@
 package com.sir.app.retrofit.transformer;
 
-import android.util.Log;
-
 import com.sir.app.retrofit.model.movie.bean.MovieResponse;
 import com.sir.app.retrofit.net.exception.ExceptionHandle;
 import com.sir.app.retrofit.net.exception.ServerException;
@@ -17,7 +15,6 @@ public class MovieErrorTransformer<T> implements Observable.Transformer<MovieRes
             @Override
             public T call(MovieResponse<T> tHttpResponse) {
                 if (tHttpResponse.getError_code() != 0) {
-                    Log.e("ErrorTransformer", tHttpResponse.toString());
                     //如果服务器端有错误信息返回，那么抛出异常，让下面的方法去捕获异常做统一处理
                     throw new ServerException(String.valueOf(tHttpResponse.getReason()), tHttpResponse.getError_code());
                 }

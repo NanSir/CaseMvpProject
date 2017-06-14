@@ -1,6 +1,6 @@
 package com.sir.app.retrofit.transformer;
 
-import com.sir.app.retrofit.model.cartoon.bean.BookResponse;
+import com.sir.app.retrofit.model.news.bean.NewsResponse;
 import com.sir.app.retrofit.net.exception.ExceptionHandle;
 import com.sir.app.retrofit.net.exception.ServerException;
 
@@ -8,18 +8,19 @@ import rx.Observable;
 import rx.functions.Func1;
 
 
-public class CartoonErrorTransformer<T> implements Observable.Transformer<BookResponse<T>, T> {
+public class NewsErrorTransformer<T> implements Observable.Transformer<NewsResponse<T>, T> {
     @Override
-    public Observable<T> call(Observable<BookResponse<T>> httpResponseObservable) {
-        return httpResponseObservable.map(new Func1<BookResponse<T>, T>() {
+    public Observable<T> call(Observable<NewsResponse<T>> httpResponseObservable) {
+        //   对服务器端给出Json数据进行校验
+        return httpResponseObservable.map(new Func1<NewsResponse<T>, T>() {
             @Override
-            public T call(BookResponse<T> tHttpResponse) {
-                if (tHttpResponse.getIsError()) {
+            public T call(NewsResponse<T> tHttpResponse) {
+                if (tHttpResponse.getShowapi_res_code() != 0) {
                     //如果服务器端有错误信息返回，那么抛出异常，让下面的方法去捕获异常做统一处理
-                    throw new ServerException(String.valueOf(tHttpResponse.getErrMsg()), Integer.parseInt(tHttpResponse.getErrCode()));
+                    throw new ServerException(String.valueOf(tHttpResponse.getShowapi_res_error()), tHttpResponse.getShowapi_res_code());
                 }
                 //服务器请求数据成功，返回里面的数据实体
-                return tHttpResponse.getReturn();
+                return tHttpResponse.getShowapi_res_body();
             }
             //  对请求服务器出现错误信息进行拦截
         }).onErrorResumeNext(new Func1<Throwable, Observable<? extends T>>() {
@@ -31,23 +32,23 @@ public class CartoonErrorTransformer<T> implements Observable.Transformer<BookRe
         });
     }
 
-    public static <T> CartoonErrorTransformer<T> create() {
-        return new CartoonErrorTransformer<>();
+    public static <T> NewsErrorTransformer<T> create() {
+        return new NewsErrorTransformer<>();
     }
 
-    private static CartoonErrorTransformer instance = null;
+    private static NewsErrorTransformer instance = null;
 
-    private CartoonErrorTransformer() {
+    private NewsErrorTransformer() {
     }
 
     /**
      * 双重校验锁单例(线程安全)
      */
-    public static <T> CartoonErrorTransformer<T> getInstance() {
+    public static <T> NewsErrorTransformer<T> getInstance() {
         if (instance == null) {
-            synchronized (CartoonErrorTransformer.class) {
+            synchronized (NewsErrorTransformer.class) {
                 if (instance == null) {
-                    instance = new CartoonErrorTransformer();
+                    instance = new NewsErrorTransformer();
                 }
             }
         }

@@ -1,10 +1,10 @@
 package com.sir.app.retrofit.api.news;
 
 import com.sir.app.retrofit.api.NetWorkApi;
-import com.sir.app.retrofit.model.news.bean.NewsCityList;
 import com.sir.app.retrofit.model.news.bean.NewsChannelList;
+import com.sir.app.retrofit.model.news.bean.NewsCityList;
 import com.sir.app.retrofit.model.news.bean.NewsContent;
-import com.sir.app.retrofit.net.response.HttpDefaultResponse;
+import com.sir.app.retrofit.model.news.bean.NewsResponse;
 
 import java.util.Map;
 
@@ -20,13 +20,13 @@ import rx.Observable;
 public interface NewsApi {
 
     @GET(NetWorkApi.getNewsChannelList)
-    Observable<HttpDefaultResponse<NewsChannelList>> getNewsChannelList(@Query("showapi_appid") String appId,
-                                                                        @Query("showapi_sign") String apiKey);
+    Observable<NewsResponse<NewsChannelList>> getNewsChannelList(@Query("showapi_appid") String appId,
+                                                                 @Query("showapi_sign") String apiKey);
 
     @GET(NetWorkApi.getNewsCityList)
-    Observable<HttpDefaultResponse<NewsCityList>> getCityList(@Query("showapi_appid") String appId,
+    Observable<NewsResponse<NewsCityList>> getCityList(@Query("showapi_appid") String appId,
                                                               @Query("showapi_sign") String apiKey);
 
     @GET(NetWorkApi.getChannelNews)
-    Observable<HttpDefaultResponse<NewsContent>> getChannelNews(@QueryMap Map<String, String> params);
+    Observable<NewsResponse<NewsContent>> getChannelNews(@QueryMap Map<String, String> params);
 }

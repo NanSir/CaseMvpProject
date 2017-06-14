@@ -9,7 +9,7 @@ import com.sir.app.retrofit.model.news.bean.NewsChannelList;
 import com.sir.app.retrofit.model.news.bean.NewsCityList;
 import com.sir.app.retrofit.model.news.bean.NewsContent;
 import com.sir.app.retrofit.net.http.HttpUtils;
-import com.sir.app.retrofit.net.transformer.DefaultTransformer;
+import com.sir.app.retrofit.transformer.NewsTransformer;
 
 import java.util.Map;
 
@@ -30,7 +30,7 @@ public class NewsModelImpl implements NewsContract.Model {
                 .setBaseUrl(NetWorkApi.YH_BaseUrl)
                 .builder(NewsApi.class)
                 .getNewsChannelList(NetWorkApi.APP_ID_YY, NetWorkApi.API_KEY_YY)
-                .compose(new DefaultTransformer());// 进行预处理
+                .compose(new NewsTransformer<NewsChannelList>());// 进行预处理
     }
 
     @Override
@@ -42,7 +42,7 @@ public class NewsModelImpl implements NewsContract.Model {
                 .setBaseUrl(NetWorkApi.YH_BaseUrl)
                 .builder(NewsApi.class)
                 .getCityList(NetWorkApi.APP_ID_YY, NetWorkApi.API_KEY_YY)
-                .compose(new DefaultTransformer<NewsCityList>());
+                .compose(new NewsTransformer<NewsCityList>());
     }
 
     @Override
@@ -56,7 +56,7 @@ public class NewsModelImpl implements NewsContract.Model {
                 .setBaseUrl(NetWorkApi.YH_BaseUrl)
                 .builder(NewsApi.class)
                 .getChannelNews(params)
-                .compose(new DefaultTransformer<NewsContent>());
+                .compose(new NewsTransformer<NewsContent>());
     }
 
 
