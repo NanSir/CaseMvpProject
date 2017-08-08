@@ -8,8 +8,6 @@ import com.space.app.base.utils.LiteOrmDBUtils;
 
 import org.polaric.colorful.Colorful;
 
-import im.fir.sdk.FIR;
-
 /**
  * 整个工程Applicaiton
  * Created by zhuyinan on 2017/3/28.
@@ -27,7 +25,6 @@ public class MyApplication extends BaseApplication {
         initOkHttpUtils();
         initDBUtils();
         initColorful();
-        FIR.init(this);
 
         //日志收集
         Thread.setDefaultUncaughtExceptionHandler(ErrorLogCollector.getInstance().getUncaughtException());

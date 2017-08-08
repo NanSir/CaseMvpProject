@@ -116,7 +116,6 @@
 -keep class com.sir.app.retrofit.model.movie.bean.** { *; }
 -keep class com.sir.app.retrofit.model.news.bean.** { *; }
 -keep class com.sir.app.retrofit.model.video.bean.** { *; }
--keep class com.sir.app.retrofit.common.UpdateInfo { *; }
 
 #MVP模式
 -keep class * implements com.sir.app.retrofit.base.BaseModel               #保持 BaseModel 不被混淆
@@ -146,3 +145,8 @@
 #ImageViews动画效果
 -dontwarn com.flaviofaria.kenburnsview.**
 -keep class com.flaviofaria.kenburnsview.**{ *;}
+
+#蒲公英
+#-libraryjars libs/pgyer_sdk_2.7.0.jar
+-dontwarn com.pgyersdk.**
+-keep class com.pgyersdk.** { *; }

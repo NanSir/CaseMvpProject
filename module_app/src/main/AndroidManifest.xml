@@ -34,17 +34,17 @@
             android:name="design_height"
             android:value="1920"></meta-data>
 
-        <!--im.fir-->
+        <!--蒲公英更新-->
         <meta-data
-            android:name="BUG_HD_SDK_GENERAL_KEY"
-            android:value="8e8300cd9439e7459ffc4f22310a00a1" />
+            android:name="PGYER_APPID"
+            android:value="8a90cf8c5e256c15dfa24ad2794d17d5"></meta-data>
         <!-- 下载安装APK兼容Android7.0安装 -->
         <!-- exported:要求必须为false，为true则会报安全异常-->
         <!-- grantUriPermissions:true，表示授予 URI 临时访问权限-->
         <!-- authorities 组件标识，按照江湖规矩,都以包名开头,避免和其它应用发生冲突-->
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.sir.app.retrofit"
+            android:authorities="${applicationId}"
             android:exported="false"
             android:grantUriPermissions="true">
 

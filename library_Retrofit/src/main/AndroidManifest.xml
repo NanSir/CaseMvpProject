@@ -6,18 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <application
-        android:allowBackup="true"
-        android:label="@string/app_name"
-        android:supportsRtl="true">
-
-        <receiver android:name="com.sir.app.retrofit.net.download.NotificationReceiver">
-            <intent-filter>
-                <action android:name="notification_clicked" />
-            </intent-filter>
-        </receiver>
-
-        <service android:name="com.sir.app.retrofit.net.download.DownLoadService"></service>
+    <application>
 
     </application>
 

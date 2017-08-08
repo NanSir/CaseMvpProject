@@ -16,8 +16,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.sir.app.retrofit.R;
+import com.sir.app.retrofit.common.UpdateAction;
 import com.sir.app.retrofit.util.TabEntity;
-import com.sir.app.retrofit.util.UpdatesUtils;
 import com.sir.app.retrofit.view.cartoon.CartoonMainFragment;
 import com.sir.app.retrofit.view.movie.MovieMainFragment;
 import com.sir.app.retrofit.view.news.NewsMainFragment;
@@ -83,7 +83,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                new UpdatesUtils().latest(getContext());
+                new UpdateAction(getContext()).startUpdates();
             }
         }, 3000);
     }

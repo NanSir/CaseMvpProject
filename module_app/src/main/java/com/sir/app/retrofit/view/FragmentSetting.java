@@ -6,7 +6,7 @@ import android.preference.PreferenceFragment;
 import android.preference.SwitchPreference;
 
 import com.sir.app.retrofit.R;
-import com.sir.app.retrofit.util.UpdatesUtils;
+import com.sir.app.retrofit.common.UpdateAction;
 
 import org.polaric.colorful.ColorPickerDialog;
 import org.polaric.colorful.Colorful;
@@ -75,7 +75,7 @@ public class FragmentSetting extends PreferenceFragment implements Preference.On
                 }
                 break;
             case 4:
-                new UpdatesUtils().checkUpdates(getActivity());
+                new UpdateAction(getActivity()).checkUpdates();
                 break;
         }
         return true;
